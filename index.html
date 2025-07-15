@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilel Dali - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6;
+            color: #333; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        header { 
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white; 
+            padding: 60px 20px; 
+            text-align: center;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 30px;
+        }
+        
+        img.profile { 
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%; 
+            border: 5px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        img.profile:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            margin: 0 auto;
+            border: 5px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-placeholder:hover {
+            transform: scale(1.05);
+        }
+        
+        section { 
+            padding: 40px; 
+        }
+        
+        h2 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 10px; 
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .about-me {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        
+        ul { 
+            list-style: none; 
+            padding: 0; 
+        }
+        
+        li { 
+            margin: 15px 0; 
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        li strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+        }
+        
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .language-item {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        footer { 
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white; 
+            text-align: center; 
+            padding: 30px; 
+            position: relative;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #2980b9;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 0;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            header h1 {
+                font-size: 2.2em;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .languages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        section:nth-child(even) {
+            animation-delay: 0.1s;
+        }
+        
+        section:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bilel Dali</h1>
+            <p>Student in Business Intelligence and Informatics</p>
+            <div class="profile-container">
+                <img src="profile.jpg" alt="Bilel Dali" class="profile">
+            </div>
+        </header>
+        
+        <section>
+            <h2>About Me</h2>
+            <div class="about-me">
+                <p>A motivated second-year student pursuing a License in Business Intelligence and Informatics, seeking to leverage my skills, teamwork experience, and diverse work background to contribute effectively to a dynamic organization while continuing to grow professionally.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <ul>
+                <li>Institut Supérieur d'Administration des Affaires, Tunis, Tunisia – 2024 – Present and successful</li>
+                <li>Lycée Raoued, Tunis, Tunisia – Graduated: 2024</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Work Experience</h2>
+            <ul>
+                <li>Ramada Plaza Hotel, Tunis (2024): Assisted in food and beverage preparation and service, ensuring high-quality customer satisfaction. Supported bar operations, maintaining cleanliness and organization while serving guests efficiently.</li>
+                <li>Centre Commercial Gammart, Tunis (Summer 2023): Performed computer hardware installations and resolved operating system issues. Conducted general maintenance tasks to ensure smooth operations at the commercial center.</li>
+                <li>Centre Commercial Gammart, Tunis (2022 - 3 months): Ensured the safety and security of the premises by monitoring activities and maintaining order. Collaborated with the team to manage access control and address safety concerns.</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Projects & Achievements</h2>
+            <ul>
+                <li>
+                    <strong>Forsa.tn - E-commerce Landing Page</strong>
+                    <p>Developed a professional e-commerce landing page for fitness equipment sales. Features bilingual content (Arabic/French), responsive design, product showcase, and integrated order form with payment options. Deployed on Netlify with modern web technologies.</p>
+                    <p><a href="https://68439d2c8563083912ee48d7--forsatn.netlify.app/" target="_blank" style="color: #3498db; text-decoration: none;">🔗 View Live Project</a></p>
+                </li>
+                <li>Programmed and developed a website as part of a group project, showcasing strong coding and teamwork skills. (tech used: HTML/CSS, JavaScript, SQL.)</li>
+                <li>Seminar Evaluator (Suminaire de Travail): Participated in evaluating and providing feedback for professional seminars, demonstrating analytical and critical thinking abilities.</li>
+                <li>Admin at Club Tunivision: Actively contributed to organizing events and managing club activities, enhancing leadership and organizational skills.</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li>EVOVISION Conference (The Z Hotel, Sfax, Tunisia | April 26, 2025): Awarded for active participation and contribution to the success of the EVOVISION conference focused on personal development and leadership for youth.</li>
+                <li>EFSET English Certification (B1 Level Achieved): B1 level proficiency in English, demonstrating intermediate language skills for professional and academic use.</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming & Web Development</h3>
+                    <p>Website Programming (HTML, CSS, JavaScript, Python basics)</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Database Management</h3>
+                    <p>Database Management (MySQL, Access)</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Software & Tools</h3>
+                    <p>Tools: Excel (Advanced), Visual Studio Code, PowerPoint, Word</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <p>Computer Hardware Installation, Operating System Troubleshooting, AI Tools: Proficient in using AI to streamline and simplify work processes, Adaptability to New Technologies: Quick learner in adopting emerging tools and platforms</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <p>Teamwork and Collaboration, Leadership (Admin in Club Tunivision SFAX), Problem-Solving, Time Management</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <div class="languages-grid">
+                <div class="language-item">
+                    <strong>Arabic</strong><br>Advanced (Native or near-native proficiency)
+                </div>
+                <div class="language-item">
+                    <strong>French</strong><br>Advanced (Professional working proficiency)
+                </div>
+                <div class="language-item">
+                    <strong>English</strong><br>Proficient (Working proficiency)
+                </div>
+                <div class="language-item">
+                    <strong>German</strong><br>Basic (Limited working proficiency)
+                </div>
+
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="contact-info">
+            Contact me: <a href="mailto:ba336158@gmail.com">ba336158@gmail.com</a>
+        </div>
+    </footer>
+</body>
+</html>
